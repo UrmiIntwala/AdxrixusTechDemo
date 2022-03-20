@@ -1,0 +1,34 @@
+<div class="row justify-content-center">
+    <div class="card" style="width: 40%; margin-top:40px;">
+        <h4 class="card-header" style="text-align: center;">Login</h4>
+        <div class="card-body">
+            <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+                
+                <div class="form-group">
+                  <label for="email">Email </label>
+                  <input class="form-control" type="text" id="email" name="email" formControlName="email">
+                  <span class="text-danger" *ngIf="(f.email.touched) && f.email.errors?.required">
+                    Email is required
+                  </span>
+                </div>
+               
+                <div class="form-group">
+                    <label for="password">Password </label>
+                    <input class="form-control" type="password" id="password" name="password" formControlName="password">
+                    <span class="text-danger" *ngIf="(f.password.touched) && f.password.errors?.required">
+                        Password is required
+                    </span>
+                </div>
+                
+                <br>
+                <div class="form-group">
+                  <button class="btn btn-primary" [disabled]="!signinForm.valid" type="submit">Login</button>
+                </div>
+               
+              </form>
+              <div style="margin-top: 7px;text-align: center;">Not yet registered? <a routerLink="../register">Register</a></div>
+        </div>
+    </div>
+</div>
+
+   

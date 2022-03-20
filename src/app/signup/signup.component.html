@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="card" style="width: 40%; margin-top:40px;">
+        <h4 class="card-header" style="text-align: center;">Register</h4>
+        <div class="card-body">
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="firstname">First Name </label>
+                    <input class="form-control" type="text" id="firstname" name="firstname" 
+                    formControlName="firstname" >
+                    <span class="text-danger" *ngIf="(f.firstname.touched) && f.firstname.errors?.required">
+                        FirstName is required
+                    </span>
+                    <span class="text-danger" *ngIf="(f.firstname.touched) && f.firstname.errors?.minlength">
+                        FirstName must be atleast 3 chars long
+                    </span>
+                </div>
+               
+                <div class="form-group">
+                  <label for="lastname">Last Name </label>
+                  <input class="form-control" type="text" id="lastname" name="lastname" formControlName="lastname">
+                    <span class="text-danger" *ngIf="(f.lastname.touched) && f.lastname.errors?.required">
+                        LastName is required
+                    </span>
+                    <span class="text-danger" *ngIf="(f.lastname.touched) && f.lastname.errors?.minlength">
+                        LastName must be atleast 3 chars long
+                    </span>
+                </div>
+               
+                <div class="form-group">
+                  <label for="email">Email </label>
+                  <input class="form-control" type="text" id="email" name="email" formControlName="email">
+                  <span class="text-danger" *ngIf="(f.email.touched) && f.email.errors?.required">
+                    Email is required
+                </span>
+                <span class="text-danger"
+                    *ngIf="f.email.touched && f.email.errors?.invalidEmail">
+                    Please enter valid Email address
+                </span>
+                </div>
+               
+                <div class="form-group">
+                    <label for="password">Password </label>
+                    <input class="form-control" type="password" id="password" name="password" formControlName="password">
+                    <span class="text-danger" *ngIf="(f.password.touched) && f.password.errors?.required">
+                        Password is required
+                    </span>
+                    <span class="text-danger"
+                        *ngIf="f.password.touched && f.password.errors?.invalidPassword">
+                        Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+                        letter and 1 number
+                    </span>
+                </div>
+                
+                <br>
+                <div class="form-group" >
+                  <button class="btn btn-primary" [disabled]="!signupForm.valid" type="submit">
+                      Sign Up</button>
+                </div>
+              </form>
+              <div style="margin-top: 7px;text-align: center;">Already registered? <a routerLink="../login">Login</a></div>
+        </div>
+    </div>
+</div>
+
+   

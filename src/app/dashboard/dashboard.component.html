@@ -1,0 +1,33 @@
+
+<span style="margin-top: 7px; float: right;margin-right: 5px;">
+  <button class="btn btn-warning btn-sm" routerLink="../login">LogOut</button>
+</span>
+<h4 style="text-align: center;margin-top: 5px;font-weight:bold;">Users data</h4>
+<div class="form-group" style="width: 20%; float:right;margin-right: 5%;margin-bottom: 1%;">
+  <input type="text" class="form-control search-field" placeholder="Search here..." [(ngModel)]="searchText">
+</div>
+<div class="container" style="width: 70%;margin-top:7px;">
+    <table class="table table-striped table-bordered table-sm">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let user of users | slice:start:end | searchFilter: searchText'>
+                <th scope="row">{{user.id}}</th>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td>{{user.email}}</td>
+              </tr>
+        </tbody>
+      </table>   
+</div>
+  
+<div style="width: 50%; overflow: auto; margin: auto;">
+  <app-pagination [totalRecords]="users.length" [recordsPerPage]="limit" 
+  (onPageChange)="displayActivePage($event)"></app-pagination> 
+</div>     
